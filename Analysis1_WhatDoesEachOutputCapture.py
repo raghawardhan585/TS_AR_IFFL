@@ -186,8 +186,8 @@ print("[n - step] Output Prediction Accuracy : ", r2_score(YT_nstep_all, YT_nste
 #
 
 # TODO - the observability stuff same as in the first example - one sensitivity plot for each output
-ls_output_index = [0]
-psi_o_tolerence = 0.9
+ls_output_index = [2]
+psi_o_tolerence = 0.99
 
 nL = psiXT_true.shape[1]
 WhT = dict_model['WhT_num'][:,ls_output_index]

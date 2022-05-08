@@ -358,10 +358,10 @@ save_system(ls_data, dict_measurement_info = dict_measurement_info_6, SYSTEM_NO 
 
 ## Bash Script Generation
 
-N_NODES_PER_OBSERVABLE = 2
+N_NODES_PER_OBSERVABLE = 4
 
 dict_hp={}
-dict_hp['ls_dict_size'] = [15] # [15,20,25]
+dict_hp['ls_dict_size'] = [5] # [15,20,25]
 dict_hp['ls_nn_layers'] = [4]
 dict_hp['System_no'] = []
 dict_hp['System_no'] = dict_hp['System_no'] + [15]
@@ -399,7 +399,7 @@ for system_no in dict_hp['System_no']:
     try:
         ls_all_run_files = os.listdir('System_' + str(system_no) + '/MyMac')
         ls_run_numbers = [np.int(i[4:]) for i in ls_all_run_files if 'RUN_' in i]
-        next_run = np.int(np.max(ls_run_numbers)) +1
+        next_run = np.int(np.max(ls_run_numbers)) + 1
     except:
         next_run = 0
     dict_system_next_run[system_no] = next_run
