@@ -25,7 +25,7 @@ RUN_NUMBER = 1
 
 #  Deep Learning Optimization Parameters ##
 
-activation_flag = 1 # 1 - RELU      2 -ELU     3 - tanh
+activation_flag = 3 # 1 - RELU      2 -ELU     3 - tanh
 
 DISPLAY_SAMPLE_RATE_EPOCH = 1000
 TRAIN_PERCENT = 85.71429
