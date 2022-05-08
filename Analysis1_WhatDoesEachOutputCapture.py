@@ -75,7 +75,7 @@ def plot_LOD_Koopman_matrices(K,Ka,Wh,Wha):
 
 # Import the best run for the system of interest
 # Output should always be available
-SYSTEM_NO =12 # Between [2,4,6]
+SYSTEM_NO =14 # Between [2,4,6]
 
 # try:
 #     # Import the computed result  statistics
@@ -164,17 +164,23 @@ for data_i in ls_data:
 
 # Find the accuracy of the model
 
+XT_1step_est_all = np.empty((0,n_states))
 XT_nstep_est_all = np.empty((0,n_states))
 XT_nstep_all = np.empty((0,n_states))
+YT_1step_est_all = np.empty((0,n_outputs))
 YT_nstep_est_all = np.empty((0,n_outputs))
 YT_nstep_all = np.empty((0,n_outputs))
 for data_i in ls_data_pred:
     XT_nstep_all = np.concatenate([XT_nstep_all,data_i['XT_true']], axis=0)
     XT_nstep_est_all = np.concatenate([XT_nstep_est_all, data_i['XT_est_nstep']], axis=0)
+    XT_1step_est_all = np.concatenate([XT_1step_est_all, data_i['XT_est_1step']], axis=0)
     YT_nstep_all = np.concatenate([YT_nstep_all, data_i['YT_true']], axis=0)
     YT_nstep_est_all = np.concatenate([YT_nstep_est_all, data_i['YT_est_nstep']], axis=0)
-print("State Prediction Accuracy : ", r2_score(XT_nstep_all, XT_nstep_est_all))
-print("Output Prediction Accuracy : ", r2_score(YT_nstep_all, YT_nstep_est_all))
+    YT_1step_est_all = np.concatenate([YT_1step_est_all, data_i['YT_est_1step']], axis=0)
+print("[1 - step] State Prediction Accuracy : ", r2_score(XT_nstep_all, XT_1step_est_all))
+print("[1 - step] Output Prediction Accuracy : ", r2_score(YT_nstep_all, YT_1step_est_all))
+print("[n - step] State Prediction Accuracy : ", r2_score(XT_nstep_all, XT_nstep_est_all))
+print("[n - step] Output Prediction Accuracy : ", r2_score(YT_nstep_all, YT_nstep_est_all))
 
 
 #

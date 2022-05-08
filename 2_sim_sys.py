@@ -232,11 +232,11 @@ def rrr(x,t):
     xdot[1] = - ar_gamma_B * x[1] + ar_kappa_B / ar_delta_B * (ar_alpha_B * (x[0] / ar_K_A) ** ar_n + ar_alpha_B0) / (
                 1 + (x[0] / ar_K_A) ** ar_n)
     # Repressilator
-    xdot[2] = 0.01*x[0] - rrr_gamma1 * x[2] + rrr_alpha1 / (1 + (x[4] / rrr_K1) ** rrr_n1)
+    xdot[2] = 0.1*x[0] - rrr_gamma1 * x[2] + rrr_alpha1 / (1 + (x[4] / rrr_K1) ** rrr_n1)
     xdot[3] = - rrr_gamma2 * x[3] + rrr_alpha2 / (1 + (x[2] / rrr_K2) ** rrr_n2)
     xdot[4] = - rrr_gamma3 * x[4] + rrr_alpha3 / (1 + (x[3] / rrr_K3) ** rrr_n3)
     # Toggle Switch
-    xdot[5] = ts_beta / (1 + (x[6] / ts_K) ** ts_n) - ts_gamma*3.8 * x[5] + 0.8 * x[1]
+    xdot[5] = ts_beta / (1 + (x[6] / ts_K) ** ts_n) - ts_gamma*3.8 * x[5] + 1e-3 * x[1]
     xdot[6] = ts_beta / (1 + (x[5] / ts_K) ** ts_n) - ts_gamma * x[6]
     return xdot
 
@@ -257,9 +257,9 @@ toggle_switch_active = True
 rrr_active = True
 numpy_random_initial_condition_seed = 10
 # Simulation Parameters
-N_SIMULATIONS = 60
-simulation_time = 50
-sampling_time = 1
+N_SIMULATIONS = 30
+simulation_time = 100
+sampling_time = 0.5
 t = np.arange(0, simulation_time, sampling_time)
 x0_init_ar = np.array([100.1,20.1])
 x0_init_rrr = np.array([10.,10., 10.])
@@ -353,7 +353,7 @@ dict_simulation_parameters = {'numpy_random_initial_condition_seed': numpy_rando
 ## SYSTEM 6 - Toggle_Switch___Activator_Repressor - State x1:6 Output y1,y2,y3
 dict_measurement_info_6 = {'state_measured': True, 'output_measured': True, 'n_delay_embedding': 1, 'ls_measured_output_indices': [0,1,2], 'ls_measured_state_indices': [0,1,2,3,4,5,6], 'formulate_Koopman_output_data_with_intersection': False}
 dict_measurement_info_6.update(dict_simulation_parameters)
-save_system(ls_data, dict_measurement_info = dict_measurement_info_6, SYSTEM_NO =14)
+save_system(ls_data, dict_measurement_info = dict_measurement_info_6, SYSTEM_NO =15)
 
 
 ## Bash Script Generation
@@ -364,7 +364,7 @@ dict_hp={}
 dict_hp['ls_dict_size'] = [15,20,25]
 dict_hp['ls_nn_layers'] = [4]
 dict_hp['System_no'] = []
-dict_hp['System_no'] = dict_hp['System_no'] + [12]
+dict_hp['System_no'] = dict_hp['System_no'] + [15]
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(1,7))   #mt
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(11,13))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(21,29))
