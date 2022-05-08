@@ -75,7 +75,7 @@ def plot_LOD_Koopman_matrices(K,Ka,Wh,Wha):
 
 # Import the best run for the system of interest
 # Output should always be available
-SYSTEM_NO =2 # Between [2,4,6]
+SYSTEM_NO =12 # Between [2,4,6]
 
 # try:
 #     # Import the computed result  statistics
@@ -95,7 +95,7 @@ SYSTEM_NO =2 # Between [2,4,6]
 # except:
 #     print('INFO: The Result for the current system under consideration does NOT EXIST')
 
-RUN_NO = 2
+RUN_NO = 1
 
 # Load the dataset
 simulation_data_file = 'System_' + str(SYSTEM_NO) + '/System_' + str(SYSTEM_NO) + '_SimulatedData.pickle'

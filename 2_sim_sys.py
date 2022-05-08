@@ -361,10 +361,10 @@ save_system(ls_data, dict_measurement_info = dict_measurement_info_6, SYSTEM_NO 
 N_NODES_PER_OBSERVABLE = 1.5
 
 dict_hp={}
-dict_hp['ls_dict_size'] = [16,20,24]
-dict_hp['ls_nn_layers'] = [3,4]
+dict_hp['ls_dict_size'] = [10, 12, 15]
+dict_hp['ls_nn_layers'] = [4]
 dict_hp['System_no'] = []
-dict_hp['System_no'] = dict_hp['System_no'] + [6]
+dict_hp['System_no'] = dict_hp['System_no'] + [14]
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(1,7))   #mt
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(11,13))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(21,29))
@@ -374,12 +374,12 @@ dict_hp['System_no'] = dict_hp['System_no'] + [6]
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(61,70))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(71,80))
 
-# system_running = 'goldentensor'
+system_running = 'goldentensor'
 # system_running = 'optictensor'
-system_running = 'microtensor'
+# system_running = 'microtensor'
 # system_running = 'quantensor'
 
-file = open('/Users/shara/Desktop/IEEETransactions_2022/' + system_running + '_run.sh','w')
+file = open('/Users/shara/Desktop/TS_AR_IFFL/' + system_running + '_run.sh','w')
 if system_running in ['microtensor', 'quantensor', 'goldentensor', 'optictensor']:
     ls_device = [' \'/cpu:0\' ']
 # elif system_running in ['goldentensor', 'optictensor']:
