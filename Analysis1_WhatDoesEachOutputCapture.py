@@ -75,7 +75,7 @@ def plot_LOD_Koopman_matrices(K,Ka,Wh,Wha):
 
 # Import the best run for the system of interest
 # Output should always be available
-SYSTEM_NO =14 # Between [2,4,6]
+SYSTEM_NO =15 # Between [2,4,6]
 
 # try:
 #     # Import the computed result  statistics
