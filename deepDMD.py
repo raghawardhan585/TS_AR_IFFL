@@ -15,7 +15,7 @@ import shutil
 import pandas as pd
 
 DEVICE_NAME = '/cpu:0'
-SYSTEM_NO = 12
+SYSTEM_NO = 11
 
 RUN_NUMBER = 1
 # max_epochs = 2000
@@ -25,7 +25,7 @@ RUN_NUMBER = 1
 
 #  Deep Learning Optimization Parameters ##
 
-activation_flag = 3;  # sets the activation function type to RELU[0], ELU[1], SELU[2] (initialized a certain way,dropout has to be done differently) , or tanh()
+activation_flag = 2 # 1 - RELU      2 -ELU     3 - tanh
 
 DISPLAY_SAMPLE_RATE_EPOCH = 1000
 TRAIN_PERCENT = 85.71429
