@@ -356,15 +356,24 @@ dict_measurement_info_6.update(dict_simulation_parameters)
 save_system(ls_data, dict_measurement_info = dict_measurement_info_6, SYSTEM_NO =15)
 
 
+
+## SYSTEM 6 - Toggle_Switch___Activator_Repressor - State x1:6 Output y1,y2,y3
+dict_measurement_info_i = {'state_measured': False, 'output_measured': True, 'n_delay_embedding': 5, 'ls_measured_output_indices': [0,1,2], 'ls_measured_state_indices': [], 'formulate_Koopman_output_data_with_intersection': False}
+dict_measurement_info_i.update(dict_simulation_parameters)
+save_system(ls_data, dict_measurement_info = dict_measurement_info_i, SYSTEM_NO =25)
+
+
+
 ## Bash Script Generation
 
-N_NODES_PER_OBSERVABLE = 4
+N_NODES_PER_OBSERVABLE = 2
 
 dict_hp={}
-dict_hp['ls_dict_size'] = [5] # [15,20,25]
+dict_hp['ls_dict_size'] = [4,8,12,12] # [15,20,25]
 dict_hp['ls_nn_layers'] = [4]
 dict_hp['System_no'] = []
-dict_hp['System_no'] = dict_hp['System_no'] + [15]
+# dict_hp['System_no'] = dict_hp['System_no'] + [21,22,23]
+dict_hp['System_no'] = dict_hp['System_no'] + [24,25]
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(1,7))   #mt
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(11,13))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(21,29))
