@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d54b6748-2842-4eba-ad3a-c1814d2f647e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Analysis2_WhatDoesOnlyOutputCapture.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Analysis3_DiffeomorphismAnalysis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Analysis4_LODofOutputKoopmanOperator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2_sim_sys.py" beforeDir="false" afterPath="$PROJECT_DIR$/2_sim_sys.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Analysis1_WhatDoesEachOutputCapture.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analysis1_WhatDoesEachOutputCapture.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/System_20_DeepDMDdata_Scaled.pickle.ckpt.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/System_20_DeepDMDdata_Scaled.pickle.ckpt.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/System_20_DeepDMDdata_Scaled.pickle.ckpt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/all_histories.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/all_tf_var_names.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/constrainedNN-Model.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/dict_hyperparameters.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/run_info.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/System_20_DataScaler.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/System_20_DeepDMDdata_Scaled.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/System_20_DeepDMDdata_Unscaled.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/System_20_SimulatedData.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/System_20/System_20_SimulatedDataInfo.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deepDMD.py" beforeDir="false" afterPath="$PROJECT_DIR$/deepDMD.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -166,7 +148,7 @@
       <workItem from="1651854266850" duration="726000" />
       <workItem from="1651866877495" duration="16598000" />
       <workItem from="1651978850701" duration="39100000" />
-      <workItem from="1652336557536" duration="21695000" />
+      <workItem from="1652336557536" duration="21875000" />
     </task>
     <servers />
   </component>

@@ -393,14 +393,14 @@ dict_hp['System_no'] = []
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(11,13))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(21,29))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(31,36))
-dict_hp['System_no'] = dict_hp['System_no'] + list(range(41,46))
-# dict_hp['System_no'] = dict_hp['System_no'] + list(range(51,60))
+# dict_hp['System_no'] = dict_hp['System_no'] + list(range(41,46))
+dict_hp['System_no'] = dict_hp['System_no'] + list(range(51,54))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(61,70))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(71,80))
 
 # system_running = 'goldentensor'
-# system_running = 'optictensor'
-system_running = 'microtensor'
+system_running = 'optictensor'
+# system_running = 'microtensor'
 # system_running = 'quantensor'
 
 file = open('/Users/shara/Desktop/TS_AR_IFFL/' + system_running + '_run.sh','w')
