@@ -2,7 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d54b6748-2842-4eba-ad3a-c1814d2f647e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/deepDMD.py" beforeDir="false" afterPath="$PROJECT_DIR$/deepDMD.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Analysis2_WhatDoesOnlyOutputCapture.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Analysis3_DiffeomorphismAnalysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Analysis4_LODofOutputKoopmanOperator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_sim_sys.py" beforeDir="false" afterPath="$PROJECT_DIR$/2_sim_sys.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Analysis1_WhatDoesEachOutputCapture.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analysis1_WhatDoesEachOutputCapture.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/System_20_DeepDMDdata_Scaled.pickle.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/System_20_DeepDMDdata_Scaled.pickle.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/System_20_DeepDMDdata_Scaled.pickle.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/all_histories.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/all_tf_var_names.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/constrainedNN-Model.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/dict_hyperparameters.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/MyMac/RUN_1/run_info.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/System_20_DataScaler.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/System_20_DeepDMDdata_Scaled.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/System_20_DeepDMDdata_Unscaled.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/System_20_SimulatedData.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/System_20/System_20_SimulatedDataInfo.pickle" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +77,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.deepDMD">
+  <component name="RunManager" selected="Python.Analysis2_WhatDoesOnlyOutputCapture">
     <configuration name="Analysis1_WhatDoesEachOutputCapture" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TS_AR_IFFL" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,6 +92,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Analysis1_WhatDoesEachOutputCapture.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Analysis2_WhatDoesOnlyOutputCapture" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TS_AR_IFFL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Analysis2_WhatDoesOnlyOutputCapture.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -105,6 +146,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Analysis2_WhatDoesOnlyOutputCapture" />
         <item itemvalue="Python.deepDMD" />
         <item itemvalue="Python.Analysis1_WhatDoesEachOutputCapture" />
       </list>
@@ -123,7 +165,8 @@
       <workItem from="1651590689247" duration="21711000" />
       <workItem from="1651854266850" duration="726000" />
       <workItem from="1651866877495" duration="16598000" />
-      <workItem from="1651978850701" duration="13407000" />
+      <workItem from="1651978850701" duration="39100000" />
+      <workItem from="1652336557536" duration="21695000" />
     </task>
     <servers />
   </component>
@@ -144,6 +187,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TS_AR_IFFL$Analysis2_WhatDoesOnlyOutputCapture.coverage" NAME="Analysis2_WhatDoesOnlyOutputCapture Coverage Results" MODIFIED="1652067718299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TS_AR_IFFL$Analysis1_WhatDoesEachOutputCapture.coverage" NAME="Analysis1_WhatDoesEachOutputCapture Coverage Results" MODIFIED="1651988125723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TS_AR_IFFL$deepDMD.coverage" NAME="deepDMD Coverage Results" MODIFIED="1652002279625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

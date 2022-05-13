@@ -273,10 +273,13 @@ for i in range(nPC_opt):
     ls_psi_o_labels.append('$\psi_{o'+str(i+1)+ '}$')
 
 
-f,((ax0,dummy_ax),(ax1,cbar_ax1)) = plt.subplots(2,2,figsize=(8,10), sharex='col', gridspec_kw={'height_ratios': [2, 4], 'width_ratios': [20, 1]})
-sb.heatmap(psi_o_sensitivity_matrix, cmap='Blues',ax=ax1, cbar_ax=cbar_ax1)
-
 x_tick_pos = np.arange(0.5,ls_data_pred[0]['XT_true'].shape[1])
+
+f,((ax0,dummy_ax),(ax1,cbar_ax1)) = plt.subplots(2,2,figsize=(6,7.5), sharex='col', gridspec_kw={'height_ratios': [2, 4], 'width_ratios': [20, 1]})
+sb.heatmap(psi_o_sensitivity_matrix, cmap='Greys',ax=ax1, cbar_ax=cbar_ax1, vmin=0, vmax = 0.6, cbar_kws={"ticks":[0,0.3,0.6]})
+# sb.heatmap(psi_o_sensitivity_matrix[:,2:5], cmap='Reds',ax=ax1, cbar_ax=cbar_ax1)
+# sb.heatmap(psi_o_sensitivity_matrix[:,5:7], cmap='Greens',ax=ax1, cbar_ax=cbar_ax1)
+
 
 ax1.set_xticks(x_tick_pos)
 ax1.set_xticklabels(ls_xticks[0:ls_data_pred[0]['XT_true'].shape[1]])
@@ -287,7 +290,11 @@ ax1.set_ylim(bottom + 0.5, top - 0.5)
 
 # Energy plot of psi_i(x) contributing to
 
-ax0.bar(x_tick_pos, np.linalg.norm(psi_o_sensitivity_matrix, axis=0, ord=2))
+ax0.bar(x_tick_pos[0:2], np.linalg.norm(psi_o_sensitivity_matrix, axis=0, ord=2)[0:2], color = '#F88A00')
+ax0.bar(x_tick_pos[2:5], np.linalg.norm(psi_o_sensitivity_matrix, axis=0, ord=2)[2:5], color ='#2657AF')
+ax0.bar(x_tick_pos[5:7], np.linalg.norm(psi_o_sensitivity_matrix, axis=0, ord=2)[5:7], color='#2D9290')
+ax0.set_ylim([0,0.8])
+ax0.set_yticks([0,0.4,0.8])
 # ax0.set_title('Energy of each observable')
 ax0.spines['right'].set_visible(False)
 ax0.spines['top'].set_visible(False)
@@ -295,18 +302,128 @@ dummy_ax.axis('off')
 plt.tight_layout()
 f.show()
 
+
+##
+
+# TODO - the observability stuff same as in the first example - one sensitivity plot for each output
+all_ls_output_index = [0,1,2]
+psi_o_tolerence = 0.99
+x_tick_pos = np.arange(0.5,ls_data_pred[0]['XT_true'].shape[1])
+f,ax = plt.subplots(2,4,figsize=(18,7.5), sharey='row', sharex='col', gridspec_kw={'height_ratios': [2, 4], 'width_ratios': [20, 20, 20,3]})
+# f,ax = plt.subplots(2,3,figsize=(18,7.5), sharey=True, sharex=True)
+cbar_ax = f.add_axes([.93, .1, .01, .49])
+for output_index in all_ls_output_index:
+    ls_output_index = [output_index]
+    nL = psiXT_true.shape[1]
+    WhT = dict_model['WhT_num'][:,ls_output_index]
+    KT = dict_model['KxT_num']
+    # Construct the observability matrix
+    OT = np.empty((WhT.shape[0],0))
+    for i in range(nL):
+        OT = np.concatenate([OT, np.linalg.matrix_power(KT,i) @ WhT], axis=1)
+    O = OT.T
+    # Decomposition of the observability matrix
+    U,S,VT = np.linalg.svd(O)
+    V = VT.T
+    # Transformation
+    T = VT
+    Tinv = V
+    K = KT.T
+    Wh = WhT.T
+    # Converted matrix
+    Ka = T @ K @ np.linalg.inv(T)
+    Wha = Wh @ np.linalg.inv(T)
+
+    # Estimate the optimal number of observable states
+    ls_nPC = np.arange(1,len(S)+1,1)
+    ls_output_accuracy = []
+    for i in range(len(ls_nPC)):
+        nPC = ls_nPC[i]
+        Ko = Ka[0:nPC,0:nPC]
+        Who = Wha[:,0:nPC]
+        ls_transformed_data = []
+        YT_actual = YT_pred_scaled = XT_all = []
+        for data_i in ls_data_pred:
+            psiXTi = data_i['psiXT_est_nstep']
+            psiXTi_ou = psiXTi @ T.T
+            psiXTi_o = psiXTi_ou[:,0:nPC]
+            YTi_o_nstep_scaled = psiXTi_o @ Who.T
+            psiXTi_hat = psiXTi_o @ Tinv[:, 0:nPC].T
+            try:
+                YT_pred_scaled = np.concatenate([YT_pred_scaled, YTi_o_nstep_scaled], axis=0)
+                YT_actual = np.concatenate([YT_actual, data_i['YT_est_nstep'][:,ls_output_index]], axis=0)
+                XT_all = np.concatenate([XT_all, data_i['XT_est_nstep']], axis=0)
+            except:
+                YT_pred_scaled = YTi_o_nstep_scaled
+                YT_actual = data_i['YT_est_nstep'][:,ls_output_index]
+                XT_all = data_i['XT_est_nstep']
+        XTs_all = dict_Scaler['XT'].transform(XT_all)
+        # Special inverse transform
+        YT_pred_scaled_intermediate = np.zeros((XTs_all.shape[0], n_outputs))
+        YT_pred_scaled_intermediate[:,ls_output_index] = YT_pred_scaled
+        YT_pred = dict_Scaler['YT'].inverse_transform(YT_pred_scaled_intermediate)[:,ls_output_index]
+        ls_output_accuracy.append(r2_score(YT_actual, YT_pred, multioutput='uniform_average'))
+        print('# states : ', ls_nPC[i], ' r2 :', ls_output_accuracy[i])
+    nPC_opt = ls_nPC[np.where(np.array(ls_output_accuracy)>psi_o_tolerence)[0][0]]
+    print('The optimal number of observed states is : ', nPC_opt)
+
+    Ko = Ka[0:nPC_opt, 0:nPC_opt]
+    Who = Wha[:, 0:nPC_opt]
+
+    T_tensor = tf.constant(T[0:nPC_opt,:], dtype=tf.float32)
+    psi_oT_tensor = tf.matmul(dict_model['psixpT'], tf.transpose(T_tensor))
+    psi_o_sensitivity_matrix = np.empty((0,ls_data_pred[0]['XT_est_nstep'].shape[1]))
+    for i in range(nPC_opt):
+        func = psi_oT_tensor[:,i:i+1]
+        func_grad = tf.gradients(func, dict_model['xpT_feed'])
+        sensitivity_all_points_for_func = func_grad[0].eval(feed_dict={dict_model['xpT_feed']: XTs_all})
+        psi_o_sensitivity_matrix= np.concatenate([psi_o_sensitivity_matrix ,np.max(sensitivity_all_points_for_func,axis=0).reshape(1,-1)],axis=0)
+
+    #
+    ls_xticks = []
+    for i in range(ls_data_pred[0]['XT_true'].shape[1]):
+        ls_xticks.append('$x_{' +str(i+1)+'}$')
+    for i in range(ls_data_pred[0]['psiXT_true'].shape[1] - ls_data_pred[0]['XT_true'].shape[1]-1):
+        ls_xticks.append('$\\varphi_{' + str(i+1) + '}$')
+    ls_xticks.append('$1$')
+    ls_psi_o_labels = []
+    for i in range(nPC_opt):
+        ls_psi_o_labels.append('$\psi_{o'+str(i+1)+ '}$')
+
+
+    if output_index == all_ls_output_index[-1]:
+        sb.heatmap(psi_o_sensitivity_matrix, cmap='Greys',ax=ax[1,output_index], cbar_ax=cbar_ax, vmin=0, vmax = 0.6, cbar_kws={"ticks":[0,0.3,0.6]})
+    else:
+        sb.heatmap(psi_o_sensitivity_matrix, cmap='Greys', ax=ax[1, output_index], cbar=False, vmin=0, vmax=0.6)
+
+    # if output_index == all_ls_output_index[0]:
+    ax[1,output_index].set_xticks(x_tick_pos)
+    ax[1,output_index].set_xticklabels(ls_xticks[0:ls_data_pred[0]['XT_true'].shape[1]])
+    ax[1,output_index].set_yticks(np.arange(0.5,nPC_opt))
+    ax[1,output_index].set_yticklabels(ls_psi_o_labels,rotation=0)
+    bottom, top = ax[1,output_index].get_ylim()
+    ax[1,output_index].set_ylim(bottom + 0.5, top - 0.5)
+
+    # Energy plot of psi_i(x) contributing to
+
+    ax[0,output_index].bar(x_tick_pos[0:2], np.linalg.norm(psi_o_sensitivity_matrix, axis=0, ord=2)[0:2], color = '#F88A00')
+    ax[0,output_index].bar(x_tick_pos[2:5], np.linalg.norm(psi_o_sensitivity_matrix, axis=0, ord=2)[2:5], color ='#2657AF')
+    ax[0,output_index].bar(x_tick_pos[5:7], np.linalg.norm(psi_o_sensitivity_matrix, axis=0, ord=2)[5:7], color='#2D9290')
+    ax[0,output_index].set_ylim([0,0.8])
+    ax[0,output_index].set_yticks([0,0.4,0.8])
+    # ax0.set_title('Energy of each observable')
+    ax[0,output_index].spines['right'].set_visible(False)
+    ax[0,output_index].spines['top'].set_visible(False)
+    ax[0,output_index].set_title('Output ' + '$y_' + str(output_index+1) + '$' )
+
+ax[0,-1].axis('off')
+ax[1,-1].axis('off')
+# plt.tight_layout(rect=[0, 0, .6, 1])
+f.show()
+f.savefig('heyo.png')
+##
+
 # Close the tensorflow environment
 tf.reset_default_graph()
 sess_i.close()
 
-##
-plt.plot(psiXTi_o[:,0:nPC_opt])
-plt.show()
-##
-
-XT_all = dict_Scaler['XT'].inverse_transform(XTs_all)
-plt.figure(figsize=(10,10))
-ax = sb.heatmap(np.corrcoef(XT_all.T),cmap='Blues', annot=True)
-bottom, top = ax.get_ylim()
-ax.set_ylim(bottom + 0.5, top - 0.5)
-plt.show()
