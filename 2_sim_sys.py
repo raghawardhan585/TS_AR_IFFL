@@ -398,9 +398,9 @@ dict_hp['System_no'] = [15]
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(61,70))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(71,80))
 
-# system_running = 'goldentensor'
+system_running = 'goldentensor'
 # system_running = 'optictensor'
-system_running = 'microtensor'
+# system_running = 'microtensor'
 # system_running = 'quantensor'
 
 file = open('/Users/shara/Desktop/TS_AR_IFFL/' + system_running + '_run.sh','w')
@@ -423,7 +423,7 @@ for system_no in dict_hp['System_no']:
     try:
         ls_all_run_files = os.listdir('System_' + str(system_no) + '/MyMac')
         ls_run_numbers = [np.int(i[4:]) for i in ls_all_run_files if 'RUN_' in i]
-        next_run = np.int(np.max(ls_run_numbers)) + 1
+        next_run = np.int(np.max(ls_run_numbers)) + 1 + 12
     except:
         next_run = 0
     dict_system_next_run[system_no] = next_run
