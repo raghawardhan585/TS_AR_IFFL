@@ -95,7 +95,7 @@ SYSTEM_NO =15 # Between [2,4,6]
 # except:
 #     print('INFO: The Result for the current system under consideration does NOT EXIST')
 
-RUN_NO = 8
+RUN_NO = 7
 
 # Load the dataset
 simulation_data_file = 'System_' + str(SYSTEM_NO) + '/System_' + str(SYSTEM_NO) + '_SimulatedData.pickle'
@@ -186,7 +186,7 @@ print("[n - step] Output Prediction Accuracy : ", r2_score(YT_nstep_all, YT_nste
 #
 
 # TODO - the observability stuff same as in the first example - one sensitivity plot for each output
-ls_output_index = [2]
+ls_output_index = [0,1,2]
 psi_o_tolerence = 0.99
 
 nL = psiXT_true.shape[1]

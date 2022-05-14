@@ -363,9 +363,9 @@ dict_measurement_info_i.update(dict_simulation_parameters)
 save_system(ls_data, dict_measurement_info = dict_measurement_info_i, SYSTEM_NO =25)
 
 ## SYSTEM 30 -  Output y1
-dict_measurement_info_i = {'state_measured': False, 'output_measured': True, 'n_delay_embedding': 5, 'ls_measured_output_indices': [0], 'ls_measured_state_indices': [], 'formulate_Koopman_output_data_with_intersection': False}
+dict_measurement_info_i = {'state_measured': False, 'output_measured': True, 'n_delay_embedding': 2, 'ls_measured_output_indices': [0], 'ls_measured_state_indices': [], 'formulate_Koopman_output_data_with_intersection': False}
 dict_measurement_info_i.update(dict_simulation_parameters)
-save_system(ls_data, dict_measurement_info = dict_measurement_info_i, SYSTEM_NO =35)
+save_system(ls_data, dict_measurement_info = dict_measurement_info_i, SYSTEM_NO =32)
 
 ## SYSTEM 40 -  Output y2
 dict_measurement_info_i = {'state_measured': False, 'output_measured': True, 'n_delay_embedding': 5, 'ls_measured_output_indices': [1], 'ls_measured_state_indices': [], 'formulate_Koopman_output_data_with_intersection': False}
@@ -384,9 +384,9 @@ save_system(ls_data, dict_measurement_info = dict_measurement_info_i, SYSTEM_NO 
 N_NODES_PER_OBSERVABLE = 2
 
 dict_hp={}
-dict_hp['ls_dict_size'] = [8,12] # [15,20,25]
-dict_hp['ls_nn_layers'] = [4]
-dict_hp['System_no'] = []
+dict_hp['ls_dict_size'] = [4,6,8,10] # [15,20,25]
+dict_hp['ls_nn_layers'] = [3,4,5]
+dict_hp['System_no'] = [15]
 # dict_hp['System_no'] = dict_hp['System_no'] + [21,22,23]
 # dict_hp['System_no'] = dict_hp['System_no'] + [24,25]
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(1,7))   #mt
@@ -394,13 +394,13 @@ dict_hp['System_no'] = []
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(21,29))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(31,36))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(41,46))
-dict_hp['System_no'] = dict_hp['System_no'] + list(range(51,54))
+# dict_hp['System_no'] = dict_hp['System_no'] + list(range(51,54))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(61,70))
 # dict_hp['System_no'] = dict_hp['System_no'] + list(range(71,80))
 
 # system_running = 'goldentensor'
-system_running = 'optictensor'
-# system_running = 'microtensor'
+# system_running = 'optictensor'
+system_running = 'microtensor'
 # system_running = 'quantensor'
 
 file = open('/Users/shara/Desktop/TS_AR_IFFL/' + system_running + '_run.sh','w')

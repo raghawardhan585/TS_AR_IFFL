@@ -1,0 +1,2 @@
+model_checkpoint_path: "autoenc_dec.ckpt"
+all_model_checkpoint_paths: "autoenc_dec.ckpt"
