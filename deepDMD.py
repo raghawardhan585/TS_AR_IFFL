@@ -25,7 +25,7 @@ RUN_NUMBER = 1
 
 #  Deep Learning Optimization Parameters ##
 
-activation_flag = 3 # 1 - RELU      2 -ELU     3 - tanh
+activation_flag = 2 # 1 - RELU      2 -ELU     3 - tanh
 
 DISPLAY_SAMPLE_RATE_EPOCH = 1000
 TRAIN_PERCENT = 85.71429
@@ -55,9 +55,9 @@ dict_training_params = {'step_size_val': 0.1, 'train_error_threshold': float(1e-
 ls_dict_training_params.append(dict_training_params)
 dict_training_params = {'step_size_val': 0.08, 'train_error_threshold': float(1e-8), 'valid_error_threshold': float(1e-8), 'max_epochs': 50000, 'batch_size': batch_size}
 ls_dict_training_params.append(dict_training_params)
-dict_training_params = {'step_size_val': 0.05, 'train_error_threshold': float(1e-10), 'valid_error_threshold': float(1e-8), 'max_epochs': 20000, 'batch_size': batch_size}
+dict_training_params = {'step_size_val': 0.05, 'train_error_threshold': float(1e-10), 'valid_error_threshold': float(1e-8), 'max_epochs': 50000, 'batch_size': batch_size}
 ls_dict_training_params.append(dict_training_params)
-dict_training_params = {'step_size_val': 0.01, 'train_error_threshold': float(1e-10), 'valid_error_threshold': float(1e-8), 'max_epochs': 20000, 'batch_size': batch_size}
+dict_training_params = {'step_size_val': 0.01, 'train_error_threshold': float(1e-10), 'valid_error_threshold': float(1e-8), 'max_epochs': 50000, 'batch_size': batch_size}
 ls_dict_training_params.append(dict_training_params)
 dict_training_params = {'step_size_val': 0.005, 'train_error_threshold': float(1e-10), 'valid_error_threshold': float(1e-8), 'max_epochs': 50000, 'batch_size': batch_size}
 ls_dict_training_params.append(dict_training_params)

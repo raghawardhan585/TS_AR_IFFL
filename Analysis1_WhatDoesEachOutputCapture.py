@@ -91,11 +91,11 @@ SYSTEM_NO =15 # Between [2,4,6]
 #     print('======================')
 #     for result_name in dict_results.keys():
 #         print(result_name + ' : ' + str(dict_results[result_name]))
-#     RUN_NO = dict_results['run_no']
+#     RUN_NO = dict_results['run_no']======
 # except:
 #     print('INFO: The Result for the current system under consideration does NOT EXIST')
-
-RUN_NO = 7
+#
+RUN_NO = 32
 
 # Load the dataset
 simulation_data_file = 'System_' + str(SYSTEM_NO) + '/System_' + str(SYSTEM_NO) + '_SimulatedData.pickle'
@@ -243,7 +243,7 @@ for i in range(len(ls_nPC)):
     YT_pred_scaled_intermediate[:,ls_output_index] = YT_pred_scaled
     YT_pred = dict_Scaler['YT'].inverse_transform(YT_pred_scaled_intermediate)[:,ls_output_index]
     ls_output_accuracy.append(r2_score(YT_actual, YT_pred, multioutput='uniform_average'))
-    print('# states : ', ls_nPC[i], ' r2 :', ls_output_accuracy[i])
+    # print('# states : ', ls_nPC[i], ' r2 :', ls_output_accuracy[i])
 nPC_opt = ls_nPC[np.where(np.array(ls_output_accuracy)>psi_o_tolerence)[0][0]]
 print('The optimal number of observed states is : ', nPC_opt)
 
@@ -303,7 +303,7 @@ plt.tight_layout()
 f.show()
 
 
-##
+#========================================================================================================================
 
 # TODO - the observability stuff same as in the first example - one sensitivity plot for each output
 all_ls_output_index = [0,1,2]
@@ -363,7 +363,7 @@ for output_index in all_ls_output_index:
         YT_pred_scaled_intermediate[:,ls_output_index] = YT_pred_scaled
         YT_pred = dict_Scaler['YT'].inverse_transform(YT_pred_scaled_intermediate)[:,ls_output_index]
         ls_output_accuracy.append(r2_score(YT_actual, YT_pred, multioutput='uniform_average'))
-        print('# states : ', ls_nPC[i], ' r2 :', ls_output_accuracy[i])
+        # print('# states : ', ls_nPC[i], ' r2 :', ls_output_accuracy[i])
     nPC_opt = ls_nPC[np.where(np.array(ls_output_accuracy)>psi_o_tolerence)[0][0]]
     print('The optimal number of observed states is : ', nPC_opt)
 
@@ -421,7 +421,7 @@ ax[1,-1].axis('off')
 # plt.tight_layout(rect=[0, 0, .6, 1])
 f.show()
 f.savefig('heyo.png')
-##
+#
 
 # Close the tensorflow environment
 tf.reset_default_graph()
